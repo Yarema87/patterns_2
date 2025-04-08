@@ -1,0 +1,4 @@
+Flask==3.0.2
+SQLAlchemy==2.0.29
+pandas==2.2.2
+faker~=37.1.0
