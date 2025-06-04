@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашня сторінка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .btn {
+            display: inline-block;
+            margin: 15px;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Обери таблицю для перегляду:</h1>
+    <a href="{{ url_for('employee.employees_list') }}" class="btn">Працівники</a>
+    <a href="{{ url_for('task.tasks_list') }}" class="btn">Завдання</a>
+    <a href="{{ url_for('mentor.mentors_list') }}" class="btn">Наставники</a>
+    <a href="{{ url_for('training.trainings_list') }}" class="btn">Навчання</a>
+    <a href="{{ url_for('feedback.feedbacks_list') }}" class="btn">Відгуки</a>
+    <a href="{{ url_for('equipment.equipments_list') }}" class="btn">Обладнання</a>
+    <a href="{{ url_for('hr.hrs_list') }}" class="btn">HR</a>
+    <a href="{{ url_for('department.departments_list') }}" class="btn">Відділи</a>
+</body>
+</html>

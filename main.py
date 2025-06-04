@@ -1,14 +1,14 @@
-from models.database import init_db, SessionLocal
-from models.repositories.employee_repo import EmployeeRepository
-from models.repositories.mentor_repo import MentorRepository
-from models.repositories.task_repo import TaskRepository
-from models.repositories.feedback_repo import FeedbackRepository
-from models.repositories.training_repo import TrainingRepository
-from models.repositories.equipment_repo import EquipmentRepository
-from models.repositories.hr_repo import HRManagerRepository
-from models.repositories.department_repo import ITDepartmentRepository
+from app.models.database import init_db, SessionLocal
+from app.models.repositories.employee_repo import EmployeeRepository
+from app.models.repositories.mentor_repo import MentorRepository
+from app.models.repositories.task_repo import TaskRepository
+from app.models.repositories.feedback_repo import FeedbackRepository
+from app.models.repositories.training_repo import TrainingRepository
+from app.models.repositories.equipment_repo import EquipmentRepository
+from app.models.repositories.hr_repo import HRManagerRepository
+from app.models.repositories.department_repo import ITDepartmentRepository
 
-from services.import_data import DataImportService
+from app.services.import_data import DataImportService
 
 
 def main():

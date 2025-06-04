@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Список обладнання</title>
+</head>
+<body>
+<a href="/"><h4>На головну</h4></a>
+    <h1>Список обладнання</h1>
+    <a href="{{ url_for('equipment.create_equipment') }}">➕ Додати обладнання</a>
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Тип</th>
+                <th>Відповідальний</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipment in equipments %}
+            <tr>
+                <td>{{ equipment.id }}</td>
+                <td>{{ equipment.type }}</td>
+                <td>{{ equipment.assigned_to_id }}</td>
+                <td>
+                    <a href="{{ url_for('equipment.edit_equipment', equipment_id=equipment.id) }}">✏️ Редагувати</a>
+                    <form action="{{ url_for('equipment.delete_equipment', equipment_id=equipment.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Видалити цього працівника?')">🗑️ Видалити</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

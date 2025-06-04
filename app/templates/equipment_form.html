@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if equipment %}Редагування{% else %}Додавання{% endif %} приладів</title>
+</head>
+<body>
+    <h1>{% if equipment %}Редагування{% else %}Додавання{% endif %} приладів</h1>
+    <form method="post">
+        <label for="type">Тип:</label><br>
+        <input type="text" id="type" name="type" value="{{ equipment.type if equipment else '' }}" required><br><br>
+
+        <label for="assigned_to_id">Відповідальний</label><br>
+        <input type="text" id="assigned_to_id" name="assigned_to_id" value="{{equipment.assigned_to_id if equipment else '' }}" required><br><br>
+
+
+        <button type="submit">💾 Зберегти</button>
+    </form>
+    <br>
+    <a href="{{ url_for('equipment.equipments_list') }}">⬅️ Назад до списку</a>
+</body>
+</html>

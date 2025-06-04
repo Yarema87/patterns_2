@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if hr %}Редагування{% else %}Додавання{% endif %} HR</title>
+</head>
+<body>
+    <h1>{% if hr %}Редагування{% else %}Додавання{% endif %} HR</h1>
+    <form method="post">
+        <label for="name">Ім'я:</label><br>
+        <input type="text" id="name" name="name" value="{{ hr.name if hr else '' }}" required><br><br>
+
+        <label for="contacts">Контакти</label><br>
+        <input type="text" id="contacts" name="contacts" value="{{hr.contacts if hr else '' }}" required><br><br>
+
+
+        <button type="submit">💾 Зберегти</button>
+    </form>
+    <br>
+    <a href="{{ url_for('hr.hrs_list') }}">⬅️ Назад до списку</a>
+</body>
+</html>

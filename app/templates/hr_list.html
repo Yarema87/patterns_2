@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Список hr-ів</title>
+</head>
+<body>
+<a href="/"><h4>На головну</h4></a>
+    <h1>Список hr-ів</h1>
+    <a href="{{ url_for('hr.create_hr') }}">➕ Додати hr-а</a>
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ім'я</th>
+                <th>Контакти</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hr in hrs %}
+            <tr>
+                <td>{{ hr.id }}</td>
+                <td>{{ hr.name }}</td>
+                <td>{{ hr.contacts }}</td>
+                <td>
+                    <a href="{{ url_for('hr.edit_hr', hr_id=hr.id) }}">✏️ Редагувати</a>
+                    <form action="{{ url_for('hr.delete_hr', hr_id=hr.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Видалити цього працівника?')">🗑️ Видалити</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
