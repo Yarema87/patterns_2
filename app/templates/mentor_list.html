@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Список менторів</title>
+</head>
+<body>
+<a href="/"><h4>На головну</h4></a>
+    <h1>Список менторів</h1>
+    <a href="{{ url_for('mentor.create_mentor') }}">➕ Додати ментора</a>
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ім'я</th>
+                <th>Посада</th>
+                <th>Контакти</th>
+                <th>Менті</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mentor in mentors %}
+            <tr>
+                <td>{{ mentor.id }}</td>
+                <td>{{ mentor.name }}</td>
+                <td>{{ mentor.department }}</td>
+                <td>{{ mentor.contacts }}</td>
+                <td>{{ mentor.mentee_id }}</td>
+                <td>
+                    <a href="{{ url_for('mentor.edit_mentor', mentor_id=mentor.id) }}">✏️ Редагувати</a>
+                    <form action="{{ url_for('mentor.delete_mentor', mentor_id=mentor.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Видалити цього працівника?')">🗑️ Видалити</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

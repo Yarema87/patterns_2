@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if mentor %}Редагування{% else %}Додавання{% endif %} ментора</title>
+</head>
+<body>
+    <h1>{% if mentor %}Редагування{% else %}Додавання{% endif %} ментора</h1>
+    <form method="post">
+        <label for="name">Ім'я:</label><br>
+        <input type="text" id="name" name="name" value="{{ mentor.name if mentor else '' }}" required><br><br>
+
+        <label for="contacts">Контакти</label><br>
+        <input type="text" id="contacts" name="contacts" value="{{mentor.contacts if mentor else '' }}" required><br><br>
+
+        <label for="department">Посада:</label><br>
+        <input type="text" id="department" name="department" value="{{ mentor.department if mentor else '' }}" required><br><br>
+
+        <label for="mentee_id">Менті:</label><br>
+        <input type="text" id="mentee_id" name="mentee_id" value="{{ mentor.mentee_id if mentor else '' }}" required><br><br>
+
+        <button type="submit">💾 Зберегти</button>
+    </form>
+    <br>
+    <a href="{{ url_for('mentor.mentors_list') }}">⬅️ Назад до списку</a>
+</body>
+</html>

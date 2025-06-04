@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Список відгуків</title>
+</head>
+<body>
+<a href="/"><h4>На головну</h4></a>
+    <h1>Список відгуків</h1>
+    <a href="{{ url_for('feedback.create_feedback') }}">➕ Додати відгук</a>
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Автор</th>
+                <th>Текст</th>
+                <th>Час відправлення</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback.id }}</td>
+                <td>{{ feedback.author_id }}</td>
+                <td>{{ feedback.text }}</td>
+                <td>{{ feedback.time_submission }}</td>
+                <td>
+                    <a href="{{ url_for('feedback.edit_feedback', feedback_id=feedback.id) }}">✏️ Редагувати</a>
+                    <form action="{{ url_for('feedback.delete_feedback', feedback_id=feedback.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Видалити цього працівника?')">🗑️ Видалити</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

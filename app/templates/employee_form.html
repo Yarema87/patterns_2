@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if employee %}Редагування{% else %}Додавання{% endif %} працівника</title>
+</head>
+<body>
+    <h1>{% if employee %}Редагування{% else %}Додавання{% endif %} працівника</h1>
+    <form method="post">
+        <label for="name">Ім'я:</label><br>
+        <input type="text" id="name" name="name" value="{{ employee.name if employee else '' }}" required><br><br>
+
+        <label for="contacts">Контакти</label><br>
+        <input type="text" id="contacts" name="contacts" value="{{employee.contacts if employee else '' }}" required><br><br>
+
+        <label for="department">Посада:</label><br>
+        <input type="text" id="department" name="department" value="{{ employee.department if employee else '' }}" required><br><br>
+
+        <button type="submit">💾 Зберегти</button>
+    </form>
+    <br>
+    <a href="{{ url_for('employee.employees_list') }}">⬅️ Назад до списку</a>
+</body>
+</html>

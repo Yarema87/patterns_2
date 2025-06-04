@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if task %}Редагування{% else %}Додавання{% endif %} завдання</title>
+</head>
+<body>
+    <h1>{% if task %}Редагування{% else %}Додавання{% endif %} завдання</h1>
+    <form method="post">
+        <label for="title">Заголовок:</label><br>
+        <input type="text" id="title" name="title" value="{{ task.title if task else '' }}" required><br><br>
+
+        <label for="description">Опис</label><br>
+        <input type="text" id="description" name="description" value="{{task.description if task else '' }}" required><br><br>
+
+        <label for="deadline">Дедлайн:</label><br>
+        <input type="text" id="deadline" name="deadline" value="{{ task.deadline if task else '' }}" required><br><br>
+
+        <label for="assigned_to_id">Відповідальний:</label><br>
+        <input type="text" id="assigned_to_id" name="assigned_to_id" value="{{ task.assigned_to_id if task else '' }}" required><br><br>
+
+        <button type="submit">💾 Зберегти</button>
+    </form>
+    <br>
+    <a href="{{ url_for('task.tasks_list') }}">⬅️ Назад до списку</a>
+</body>
+</html>

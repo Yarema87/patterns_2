@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Список завдань</title>
+</head>
+<body>
+<a href="/"><h4>На головну</h4></a>
+    <h1>Список завдань</h1>
+    <a href="{{ url_for('task.create_task') }}">➕ Додати завдання</a>
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Заголовок</th>
+                <th>Опис</th>
+                <th>Дедлайн</th>
+                <th>Відповідальний</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.deadline }}</td>
+                <td>{{ task.assigned_to_id }}</td>
+                <td>
+                    <a href="{{ url_for('task.edit_task', task_id=task.id) }}">✏️ Редагувати</a>
+                    <form action="{{ url_for('task.delete_task', task_id=task.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Видалити цього працівника?')">🗑️ Видалити</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

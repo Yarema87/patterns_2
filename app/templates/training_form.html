@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if training %}Редагування{% else %}Додавання{% endif %} тренінгу</title>
+</head>
+<body>
+    <h1>{% if training %}Редагування{% else %}Додавання{% endif %} тренінгу</h1>
+    <form method="post">
+        <label for="title">Заголовок:</label><br>
+        <input type="text" id="title" name="title" value="{{ training.title if training else '' }}" required><br><br>
+
+
+        <button type="submit">💾 Зберегти</button>
+    </form>
+    <br>
+    <a href="{{ url_for('training.trainings_list') }}">⬅️ Назад до списку</a>
+</body>
+</html>

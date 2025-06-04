@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Список тренінгів</title>
+</head>
+<body>
+<a href="/"><h4>На головну</h4></a>
+    <h1>Список тренінгів</h1>
+    <a href="{{ url_for('training.create_training') }}">➕ Додати тренінг</a>
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Заголовок</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for training in trainings %}
+            <tr>
+                <td>{{ training.id }}</td>
+                <td>{{ training.title }}</td>
+                <td>
+                    <a href="{{ url_for('training.edit_training', training_id=training.id) }}">✏️ Редагувати</a>
+                    <form action="{{ url_for('training.delete_training', training_id=training.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Видалити цього працівника?')">🗑️ Видалити</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
